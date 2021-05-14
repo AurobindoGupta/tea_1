@@ -1,5 +1,7 @@
 
+
 import React, { useEffect, useState } from 'react';
+import './App.css';
 
 
 
@@ -12,6 +14,7 @@ function App() {
 
 
     const [creditDetails, setCreditDetails] = useState([]);
+   
 
 
     useEffect(() => {
@@ -27,16 +30,32 @@ function App() {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          setCreditDetails(data.results);
+          setCreditDetails(data.cast);
       });
     
 }
+
     
     
     return (
+      <div>
+      <h2>CAST</h2>
+      <div className="container">
+      
+      
+      {
+         creditDetails.map ((c) =>
+        <div className='cast'>
+        <img src= {(c.profile_path)? Img_API+(c.profile_path): "https://images.unsplash.com/photo-1620941535699-52b7eafbabd2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=658&q=80" }></img>
+        <div className='info'>
         <h3>
-             { creditDetails && creditDetails.map ((c) =>  c.name )}
+              {c.name} 
         </h3>
+        </div> 
+        </div>           
+        )}
+      </div>
+      </div>
     );
 }
 
