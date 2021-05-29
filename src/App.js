@@ -2,59 +2,58 @@
 
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import Que2 from './Que2';
+import Que3 from './Que3';
+import Que4 from './Que4';
+import Que5 from './Que5'
 
 
 
 
 function App() {
-  const credit_API = "https://api.themoviedb.org/3/movie/567189/credits?api_key=1c40073fce452c87ff4ca4bee5877ecf&language=en-US";
+  const[ ans, setAns] = useState(0);
+  const[a, setA] =useState(0);
+  const[b,setB] = useState(0);
+  
+  
+    const handleAdd= (e)=>{
+      setAns(parseInt(a)+ parseInt(b) );
+      
+    }
+    const handlePro = (e)=>{
+      setAns(a*b);
+    }
+    const handleSub = (e)=>{
+      setAns(a-b);
+    }
+    const handleDevide = (e)=>{
+      setAns(a/b);
+    }
     
-    const Img_API = "https://image.tmdb.org/t/p/w1280";
-
-
-
-    const [creditDetails, setCreditDetails] = useState([]);
-   
-
-
-    useEffect(() => {
-       
-        getMovies(credit_API);
-        
-    }, []);
-
-    const getMovies = ( API) =>{
-    
-    
-        fetch(API)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setCreditDetails(data.cast);
-      });
-    
-}
-
-    
-    
+    const handleInputChange =(e)=>{
+      switch(e.target.id){
+        case 'a': setA(e.target.value);
+        case 'b' : setB(e.target.value);
+      }
+     //if we put console.log here it shows the previos value not the current value why.
+    }
+    console.log(a,b);
     return (
-      <div>
-      <h2>CAST</h2>
+      
       <div className="container">
-      
-      
-      {
-         creditDetails.map ((c) =>
-        <div className='cast'>
-        <img src= {(c.profile_path)? Img_API+(c.profile_path): "https://images.unsplash.com/photo-1620941535699-52b7eafbabd2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=658&q=80" }></img>
-        <div className='info'>
-        <h3>
-              {c.name} 
-        </h3>
-        </div> 
-        </div>           
-        )}
+      <div>
+        <input type="number" id="a" placeholder="a" onChange={handleInputChange}></input>
+        <input type="number" id="b" placeholder="b" onChange={handleInputChange}></input>
       </div>
+      <button onClick={handleAdd}>+</button>
+      <button onClick={handlePro}>*</button>
+      <button onClick={handleSub}>-</button>
+      <button onClick={handleDevide}>/</button>
+      <div>{ans}</div>
+      <Que2/>
+      <Que3/>
+      <Que4/>
+      <Que5/>
       </div>
     );
 }
