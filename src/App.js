@@ -6,6 +6,7 @@ import Que2 from './Que2';
 import Que3 from './Que3';
 import Que4 from './Que4';
 import Que5 from './Que5'
+import Que6 from './Que6'
 
 
 
@@ -54,6 +55,7 @@ function App() {
       <Que3/>
       <Que4/>
       <Que5/>
+      <Que6/>
       </div>
     );
 }
