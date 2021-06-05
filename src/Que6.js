@@ -3,7 +3,8 @@ const Que6 = () =>{
         
         <div>
         <hr/>
-            <div>yo</div>
+            <div>LOADING./....</div>
+            <button>Loaded</button>
         </div>
     )
 }
