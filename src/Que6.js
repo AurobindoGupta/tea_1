@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const Que6 = () =>{
-const[invisible,setInvisible]= useState(true);
+const[invisible,setInvisible]= useState(false);
 const[pic,SetPic]= useState([]);
 const[name,SetName]= useState([]);
 let api= "https://api.github.com/search/repositories?q=stars%3E1&sort=stars"
